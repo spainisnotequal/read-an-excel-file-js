@@ -1,39 +1,36 @@
 const XLSX = require("xlsx");
 
-/* ------------------------------ */
-/* First woorkbook (xlsx version) */
-/* ------------------------------ */
+// read the first sheet of the "foo.xlsx" file and get its fields
+const FILE = "./foo.xlsx";
+const workbook = XLSX.readFile(FILE);
 
-const fooWorkbook = XLSX.readFile("./foo.xlsx");
+// log the number of sheets
+const numberOfSheets = workbook.Props.Worksheets;
+console.log("Number of sheets:", numberOfSheets);
 
-// log every row in every sheet of the workook
-fooWorkbook.SheetNames.map((sheetName) => {
-  console.log("Name of the sheet:", sheetName);
+// log the names of the sheets
+const sheetsNames = workbook.SheetNames;
+console.log("Sheets names:", sheetsNames);
 
-  const sheet = XLSX.utils.sheet_to_json(fooWorkbook.Sheets[sheetName]);
+// only consider the first sheet
+const sheet = workbook.Sheets[sheetsNames[0]];
+console.log(sheet);
+const sheetData = XLSX.utils.sheet_to_json(sheet);
+console.log(sheetData);
+const fields = Object.keys(sheetData[0]);
+console.log(fields);
 
-  if (sheet[0]) console.log("Fields of the sheet:", Object.keys(sheet[0]));
-  else console.log("The sheet is empty.");
+// get the data in A2
+console.log("type:", sheet.A2.t); //=> "n" means number
+console.log("raw value:", sheet.A2.v);
+console.log("formatted text:", sheet.A2.w);
 
-  // Log each row of the sheet
-  sheet.map((row) => console.log(row));
-});
+// get the data in B2
+console.log("type:", sheet.B2.t); //=> "s" means text
+console.log("raw value:", sheet.B2.v);
+console.log("formatted text:", sheet.B2.w);
 
-/* ------------------------------ */
-/* Second woorkbook (xls version) */
-/* ------------------------------ */
-
-const barWorkbook = XLSX.readFile("./bar.xls");
-
-// log every row in every sheet of the workook
-barWorkbook.SheetNames.map((sheetName) => {
-  console.log("Name of the sheet:", sheetName);
-
-  const sheet = XLSX.utils.sheet_to_json(barWorkbook.Sheets[sheetName]);
-
-  if (sheet[0]) console.log("Fields of the sheet:", Object.keys(sheet[0]));
-  else console.log("The sheet is empty.");
-
-  // Log each row of the sheet
-  sheet.map((row) => console.log(row));
-});
+// get the data in C2
+console.log("type:", sheet.C2.t); //=> "n" means number
+console.log("raw value:", sheet.C2.v);
+console.log("formatted text:", sheet.C2.w);
