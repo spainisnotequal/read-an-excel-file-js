@@ -4,40 +4,60 @@ const XLSX = require("xlsx");
 /* First woorkbook (xlsx version) */
 /* ------------------------------ */
 
-const workbook = XLSX.readFile("./foo.xlsx");
-const sheetNameList = workbook.SheetNames; // ordered list of the sheets in the workbook
+const fooWorkbook = XLSX.readFile("./foo.xlsx");
+
+// log every row in every sheet of the workook
+fooWorkbook.SheetNames.map((sheet) => {
+  console.log("Name of the sheet:", sheet);
+  XLSX.utils
+    .sheet_to_json(fooWorkbook.Sheets[sheet])
+    .map((row) => console.log(row));
+});
+
+// Process each sheet individually
+const fooSheetNameList = fooWorkbook.SheetNames; // ordered list of the sheets in the fooWorkbook
 
 //first sheet
-const dataFirstSheet = XLSX.utils.sheet_to_json(
-  workbook.Sheets[sheetNameList[0]]
+const dataFirstFooSheet = XLSX.utils.sheet_to_json(
+  fooWorkbook.Sheets[fooSheetNameList[0]]
 );
 console.log("Data from the first sheet");
-dataFirstSheet.map((row) => console.log(row));
+dataFirstFooSheet.map((row) => console.log(row));
 
 // second sheet
-const dataSecondSheet = XLSX.utils.sheet_to_json(
-  workbook.Sheets[sheetNameList[1]]
+const dataSecondFooSheet = XLSX.utils.sheet_to_json(
+  fooWorkbook.Sheets[fooSheetNameList[1]]
 );
 console.log("Data from the second sheet");
-dataSecondSheet.map((row) => console.log(row));
+dataSecondFooSheet.map((row) => console.log(row));
 
 /* ------------------------------ */
 /* Second woorkbook (xls version) */
 /* ------------------------------ */
 
-const workbook2 = XLSX.readFile("./bar.xls");
-const sheetNameList2 = workbook.SheetNames; // ordered list of the sheets in the workbook
+const barWorkbook = XLSX.readFile("./bar.xls");
+
+// log every row in every sheet of the workook
+barWorkbook.SheetNames.map((sheet) => {
+  console.log("Name of the sheet:", sheet);
+  XLSX.utils
+    .sheet_to_json(barWorkbook.Sheets[sheet])
+    .map((row) => console.log(row));
+});
+
+// Process each sheet individually
+const barSheetNameList = barWorkbook.SheetNames; // ordered list of the sheets in the barWorkbook
 
 //first sheet
-const dataFirstSheet2 = XLSX.utils.sheet_to_json(
-  workbook2.Sheets[sheetNameList2[0]]
+const dataFirstBarSheet = XLSX.utils.sheet_to_json(
+  barWorkbook.Sheets[barSheetNameList[0]]
 );
 console.log("Data from the first sheet");
-dataFirstSheet2.map((row) => console.log(row));
+dataFirstBarSheet.map((row) => console.log(row));
 
 // second sheet
-const dataSecondSheet2 = XLSX.utils.sheet_to_json(
-  workbook2.Sheets[sheetNameList2[1]]
+const dataSecondBarSheet = XLSX.utils.sheet_to_json(
+  barWorkbook.Sheets[barSheetNameList[1]]
 );
 console.log("Data from the second sheet");
-dataSecondSheet2.map((row) => console.log(row));
+dataSecondBarSheet.map((row) => console.log(row));
