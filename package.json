@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/spainisnotequal/excel2database-js/issues"
   },
-  "homepage": "https://github.com/spainisnotequal/excel2database-js#readme"
+  "homepage": "https://github.com/spainisnotequal/excel2database-js#readme",
+  "dependencies": {
+    "xlsx": "^0.15.6"
+  }
 }
