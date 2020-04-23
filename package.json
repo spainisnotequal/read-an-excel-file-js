@@ -1,0 +1,19 @@
+{
+  "name": "excel2database",
+  "version": "1.0.0",
+  "description": "Read an Excel file and write its data to a Postgres database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spainisnotequal/excel2database-js.git"
+  },
+  "author": "spainisnotequal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/spainisnotequal/excel2database-js/issues"
+  },
+  "homepage": "https://github.com/spainisnotequal/excel2database-js#readme"
+}
