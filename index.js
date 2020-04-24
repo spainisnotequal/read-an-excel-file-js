@@ -21,6 +21,10 @@ console.log(sheetData);
 const fields = Object.keys(sheetData[0]);
 console.log(fields);
 
+// get the number of rows
+const numberOfRows = sheetData.length;
+console.log("Number of rows", numberOfRows);
+
 // get the data in A2 (is a Date field)
 if (sheet.A2) {
   console.log("type:", sheet.A2.t); //=> "d" means date
@@ -44,5 +48,3 @@ if (sheet.C2) {
   console.log("formatted text:", sheet.C2.w);
   console.log("Excel format:", sheet.C2.z);
 } else console.log("Empy cell");
-
-//
