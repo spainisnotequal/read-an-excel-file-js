@@ -18,8 +18,8 @@ const sheet = workbook.Sheets[sheetsNames[0]];
 console.log(sheet);
 const sheetData = XLSX.utils.sheet_to_json(sheet);
 console.log(sheetData);
-const fields = Object.keys(sheetData[0]);
-console.log(fields);
+const fieldNames = Object.keys(sheetData[0]);
+console.log(fieldNames);
 
 // get the number of rows
 const numberOfRows = sheetData.length;
