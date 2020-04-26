@@ -1,2 +1,2 @@
 # excel2database-js
-Read an Excel file and write its data to a Postgres database
+Read an Excel file and access its data
